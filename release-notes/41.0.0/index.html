@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,500,700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap">
 <script src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/documentation/assets/css/styles.1dc85473.css">
-<script src="/documentation/assets/js/runtime~main.17b44987.js" defer="defer"></script>
-<script src="/documentation/assets/js/main.9c3dbfc8.js" defer="defer"></script>
+<script src="/documentation/assets/js/runtime~main.507dcd12.js" defer="defer"></script>
+<script src="/documentation/assets/js/main.5a6bf486.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -24,6 +24,7 @@
 <li>We removed the OIDC <code>auto</code> login feature from the Rucio clients, to comply with the OIDC standard. <a href="https://github.com/rucio/rucio/issues/8318" target="_blank" rel="noopener noreferrer">https://github.com/rucio/rucio/issues/8318</a></li>
 <li><code>rucio upload</code> did not check the <code>add_did/s</code> permission when doing an upload, as this was hidden within an <code>add_replicas</code> call. This has now been fixed. If certain upload workflows are now failing for you, this might be the reason.</li>
 <li>For <code>ssh</code> authentication with Rucio, the server now requires <code>rsa-sha2-256</code> signatures. This is not done out of security considerations (SHA-1 signatures would be fine and are not unsafe for this workflow), however, <a href="https://www.paramiko.org" target="_blank" rel="noopener noreferrer">Paramiko</a> the library we use for ssh signatures dropped support for SHA-1. Thus, if you are using ssh authentication with Rucio, you need to use an 41+ client, which supports <code>rsa-sha2-256</code>.</li>
+<li>The <code>nonssl_port</code> configuration option has been removed from the <code>[messaging-fts3]</code> section. All deployments must now use the &#x27;port&#x27; option regardless of whether &#x27;use_ssl&#x27; is <code>True</code> or <code>False</code>.</li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="upgrade-instructions">Upgrade Instructions<a href="#upgrade-instructions" class="hash-link" aria-label="Direct link to Upgrade Instructions" title="Direct link to Upgrade Instructions">​</a></h2>
 <p>This major release does not include any schema changes.</p>
